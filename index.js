@@ -1,4 +1,3 @@
-
 const express = require("express");
 const fetch = require("node-fetch");
 const cors = require("cors");
@@ -19,19 +18,8 @@ async function fetchFMCSA(path) {
 app.get("/api/verify/dot/:dotNumber", async (req, res) => {
   const { dotNumber } = req.params;
   try {
-    const basic = await fetchFMCSA(`/${dotNumber}`);
-    const authority = await fetchFMCSA(`/${dotNumber}/authority`);
-    const cargo = await fetchFMCSA(`/${dotNumber}/cargo-carried`);
-    const classification = await fetchFMCSA(`/${dotNumber}/operation-classification`);
-    const oos = await fetchFMCSA(`/${dotNumber}/oos`);
-
-    res.json({
-      basic,
-      authority,
-      cargo,
-      classification,
-      oos
-    });
+    const carrierData = await fetchFMCSA(`/${dotNumber}`);
+    res.json(carrierData);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to fetch FMCSA data" });
