@@ -2,7 +2,7 @@
 {
   "name": "trucker-profit-backend",
   "version": "1.0.0",
-  "description": "Backend API for Trucker Profit App integrating FMCSA QCMobile API",
+  "description": "Trucker Profit Backend API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -15,7 +15,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  },
-  "author": "Trucker Profit",
-  "license": "ISC"
+  }
 }
