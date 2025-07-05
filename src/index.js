@@ -1,11 +1,10 @@
-
-import React from "react";
-import ReactDOM from "react-dom/client";
-import TruckerProfitApp from "./TruckerProfitApp";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <TruckerProfitApp />
-  </React.StrictMode>
-);
+app.get("/api/verify/mc/:mcNumber", async (req, res) => {
+  const { mcNumber } = req.params;
+  try {
+    const carrierData = await fetchFMCSA(`/docket-number/${mcNumber}`);
+    res.json(carrierData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch FMCSA data by MC" });
+  }
+});
